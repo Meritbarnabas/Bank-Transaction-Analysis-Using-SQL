@@ -13,32 +13,6 @@ The analysis includes data retrieval, filtering, sorting, aggregation, grouping,
 
 ---
 
-
-### 1. Data Retrieval & Aggregation
-```sql
--- Query to get total transaction volume, total value, and average value
-SELECT 
-    COUNT(*) AS total_transactions,
-    SUM(amount) AS total_value,
-    AVG(amount) AS average_transaction_value
-FROM transactions;
--- Query to compare Credit vs Debit transaction volumes
-SELECT 
-    transaction_type, 
-    COUNT(*) AS transaction_count,
-    SUM(amount) AS total_amount
-FROM transactions
-GROUP BY transaction_type;
-
--- Query to identify top customers by transaction value
-SELECT 
-    c.customer_name,
-    SUM(t.amount) AS total_spent
-FROM customers c
-JOIN transactions t ON c.customer_id = t.customer_id
-GROUP BY c.customer_name
-ORDER BY total_spent DESC;
-
 Recommendations
 Offer loyalty rewards or special banking benefits to high-value customers like Aisha and Seun to improve customer retention.
 
